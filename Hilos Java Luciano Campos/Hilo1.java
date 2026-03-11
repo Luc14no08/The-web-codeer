@@ -6,8 +6,13 @@ public class Hilo1 extends Thread {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Hilo1 hilo1 = new Hilo1();
         hilo1.start();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.println("Favor de esperar...");
+        }
     }
 }
