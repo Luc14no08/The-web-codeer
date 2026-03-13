@@ -1,15 +1,23 @@
 public class Hilo3 implements Runnable {
+    private static int count = 0;
+    private synchronized void incrementar(){    
+        count++;
+    }
+    public int getCout(){
+        return count;
+    }
+    private contador contador;
+    public void tareaIncremento(contador contador){
+        this.contador = contador;
+    }
     @Override
     public void run() {
-        System.out.println("1 2 3 4 5");
-        System.out.println("A B C D E");
+        for (int i = 0; i < 80; i++) {
+            contador.incrementar();
+        }
     }
 
     public static void main(String[] args) {
-        Hilo3 hilo3 = new Hilo3();
-        Thread thread1 = new Thread(hilo3);
-        Thread thread2 = new Thread(hilo3);
-        thread1.start();
-        thread2.start();
+        System.out.println("Imprimiendo..." + count);
     }
 }
