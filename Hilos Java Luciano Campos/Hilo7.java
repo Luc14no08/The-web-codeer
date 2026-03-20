@@ -3,7 +3,6 @@ public class Hilo7 implements Callable<Integer>{
     public static void main(String[] args) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         
-        // Crear Callable que calcula la suma
         Callable<Integer> tareaSuma = () -> {
             int suma = 0;
             for (int i = 1; i <= 100; i++) {
@@ -14,15 +13,13 @@ public class Hilo7 implements Callable<Integer>{
         };
         
         try {
-            // Enviar tarea y obtener Future
             Future<Integer> futureResultado = executor.submit(tareaSuma);
             
-            // Esperar y obtener resultado
             Integer resultado = futureResultado.get();
             System.out.println("Resultado recibido = " + resultado);
             
         } catch (InterruptedException | ExecutionException e) {
-            System.err.println("Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         } finally {
             executor.shutdown();
         }

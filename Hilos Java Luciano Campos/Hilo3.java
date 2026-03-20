@@ -3,7 +3,7 @@ public class Hilo3 implements Runnable {
     private synchronized void incrementar(){    
         count++;
     }
-    public int getCout(){
+    public int getCount(){
         return count;
     }
     private contador contador;
